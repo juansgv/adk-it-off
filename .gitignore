@@ -1,0 +1,10 @@
+# ignore virtualenv
+.venv/
+
+# ignore everything…
+*
+# …except this file
+!.gitignore
+# …and your agent code folder
+!multi_tool_agent/
+!multi_tool_agent/**
