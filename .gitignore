@@ -8,3 +8,5 @@
 # …and your agent code folder
 !multi_tool_agent/
 !multi_tool_agent/**
+# ignore environment file
+multi_tool_agent/.env
