@@ -5,7 +5,9 @@
 *
 # …except this file
 !.gitignore
-# …and your agent code folder and requirements
+# …and your documentation, agent code folder and requirements
+!DOCUMENTATION.md
+!README.md
 !multi_tool_agent/
 !multi_tool_agent/**
 !requirements/
