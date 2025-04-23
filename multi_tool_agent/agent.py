@@ -51,6 +51,15 @@ youtube_shorts_agent = LlmAgent(
 root_agent = youtube_shorts_agent
 
 
+
+
+
+
+
+
+
+
+
 def list_products(shop_id: str) -> dict:
     """Lists products for a given ecommerce shop."""
     return {"status": "success", "products": []}
