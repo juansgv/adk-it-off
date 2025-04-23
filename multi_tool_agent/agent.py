@@ -1,54 +1,54 @@
 import os
 from google.adk.agents import Agent
 
-from google.adk.agents import LlmAgent
-from google.adk.tools import google_search
+# from google.adk.agents import LlmAgent
+# from google.adk.tools import google_search
 
-from youtube_shorts_assistant.util import load_instruction_from_file
+# from youtube_shorts_assistant.util import load_instruction_from_file
 
-# Subagents
+# # Subagents
 
-# 1. ScriptWriter
-script_writer_agent = LlmAgent(
-    name="script_writer_agent",
-    model="gemini-2.5-pro-exp-03-25",
-    instruction=load_instruction_from_file("script_writer_agent_instruction.txt"),
-    tools=[google_search],
-    output_key="generated_script", # Save result to state
-)
+# # 1. ScriptWriter
+# script_writer_agent = LlmAgent(
+#     name="script_writer_agent",
+#     model="gemini-2.5-pro-exp-03-25",
+#     instruction=load_instruction_from_file("script_writer_agent_instruction.txt"),
+#     tools=[google_search],
+#     output_key="generated_script", # Save result to state
+# )
 
-# 2. Visualizer
-visual_editor_agent = LlmAgent(
-    name="visual_editor_agent",
-    model="gemini-2.0-flash",
-    instruction=load_instruction_from_file("visual_editor_agent_instruction.txt"),
-    description="Generates visual concepts based on a provided script.",
-    output_key="generated_visuals", # Save result to state
-)
+# # 2. Visualizer
+# visual_editor_agent = LlmAgent(
+#     name="visual_editor_agent",
+#     model="gemini-2.0-flash",
+#     instruction=load_instruction_from_file("visual_editor_agent_instruction.txt"),
+#     description="Generates visual concepts based on a provided script.",
+#     output_key="generated_visuals", # Save result to state
+# )
 
-# 3. Formatters
-formatter_agent = LlmAgent(
-    name="ConceptFormatter",
-    model="gemini-2.0-flash",
-    instruction="""Combine the script from state ['generated_script'] and the visual concepts from state ['generated_visuals'] into a final Markdown.""",
-    description="Formats the final short concept.",
-    output_key="final_short_concept"
-)
+# # 3. Formatters
+# formatter_agent = LlmAgent(
+#     name="ConceptFormatter",
+#     model="gemini-2.0-flash",
+#     instruction="""Combine the script from state ['generated_script'] and the visual concepts from state ['generated_visuals'] into a final Markdown.""",
+#     description="Formats the final short concept.",
+#     output_key="final_short_concept"
+# )
 
-# LLM Agent
-youtube_shorts_agent = LlmAgent(
-    name="youtube_shorts_agent",
-    model="gemini-2.5-pro-exp-03-25",
-    description="You are a ShortForm Genius, an AI specialized in crafting engaging Youtube Shorts content. Your expertise lies in generating content.",
-    instruction=load_instruction_from_file("shorts_agent_instruction.txt"),
-    sub_agents=[script_writer_agent,
-                visual_editor_agent,
-                formatter_agent
-                ]
-)
+# # LLM Agent
+# youtube_shorts_agent = LlmAgent(
+#     name="youtube_shorts_agent",
+#     model="gemini-2.5-pro-exp-03-25",
+#     description="You are a ShortForm Genius, an AI specialized in crafting engaging Youtube Shorts content. Your expertise lies in generating content.",
+#     instruction=load_instruction_from_file("shorts_agent_instruction.txt"),
+#     sub_agents=[script_writer_agent,
+#                 visual_editor_agent,
+#                 formatter_agent
+#                 ]
+# )
 
-# Run the Root agent
-root_agent = youtube_shorts_agent
+# # Run the Root agent
+# root_agent = youtube_shorts_agent
 
 
 
