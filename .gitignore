@@ -5,8 +5,9 @@
 *
 # …except this file
 !.gitignore
-# …and your agent code folder
+# …and your agent code folder and requirements
 !multi_tool_agent/
 !multi_tool_agent/**
+!requirements/
 # ignore environment file
 multi_tool_agent/.env
